@@ -31,6 +31,24 @@
                 android:layout_weight="1"
                 android:text="@string/search" />
 
+            <Space
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_gravity="center"
+                android:text="@string/tv" />
+
+            <Space
+                android:layout_width="38dp"
+                android:layout_height="44dp"
+                android:layout_weight="500" />
+
             <Button
                 android:id="@+id/button8"
                 android:layout_width="wrap_content"
