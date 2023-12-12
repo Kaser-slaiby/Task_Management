@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Task_Management</string>
+    <string name="list">list</string>
+    <string name="search">search</string>
+    <string name="add">add</string>
+
 </resources>
