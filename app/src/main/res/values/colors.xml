@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     \\add new color
     <color name="gold">#CFB53B</color>
+    <color name="G_BLACK">#221501</color>
+
 </resources>
