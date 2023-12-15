@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Management</string>
+    <string name="app_name">TASKS</string>
     \\\For activity_main
     <string name="list">list</string>
     <string name="search">search</string>
