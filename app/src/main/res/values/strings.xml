@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">TASKS</string>
-    \\\For activity_main
+    \\\\For activity_main
     <string name="list">list</string>
     <string name="search">search</string>
     <string name="add">add</string>
     <string name="tv">Manager Tasks</string>
+
 </resources>
