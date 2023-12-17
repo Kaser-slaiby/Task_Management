@@ -15,6 +15,7 @@
         android:orientation="vertical"
         tools:ignore="UselessParent">
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -33,6 +34,8 @@
                 app:icon="@drawable/baseline_format_list_bulleted_24"
                 />
 
+
+
             <Button
                 style="@style/ToggleButtonWithIconOnly"
                 android:id="@+id/button7"
@@ -42,7 +45,6 @@
                 tools:layout_editor_absoluteY="153dp"
                 app:icon="@drawable/baseline_search_24"
                 />
-
             <Button
                 style="@style/ToggleButtonWithIconOnly"
                 android:id="@+id/button8"
@@ -53,9 +55,11 @@
                 android:layout_marginLeft="4dp"
                 app:icon="@drawable/baseline_post_add_24"
                 />
+
         </LinearLayout>
 
-        <ListView
+
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
