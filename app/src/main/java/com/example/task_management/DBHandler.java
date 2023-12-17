@@ -7,32 +7,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 public class DBHandler extends SQLiteOpenHelper {
-    /**
-     * Create a helper object to create, open, and/or manage a database.
-     * This method always returns very quickly.  The database is not actually
-     * created or opened until one of {@link #getWritableDatabase} or
-     * {@link #getReadableDatabase} is called.
-     *
-     * @param context to use for locating paths to the the database
-     * @param name    of the database file, or null for an in-memory database
-     * @param factory to use for creating cursor objects, or null for the default
-     * @param version number of the database (starting at 1); if the database is older,
-     *                {@link #onUpgrade} will be used to upgrade the database; if the database is
-     *                newer, {@link #onDowngrade} will be used to downgrade the database
-     */
-    public DBHandler(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+
+    public DBHandler(@Nullable Context context) {
+        super(context, DB_NAME, null, DB_VERSION);
     }
 
-    /**
-     * Called when the database is created for the first time. This is where the
-     * creation of tables and the initial population of the tables should happen.
-     *
-     * @param db The database.
-     */
-    @Override
-    public void onCreate(SQLiteDatabase db) {
 
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase ) {
+
+        String query = "CREATE TABLE " + TABLE_NAME + "("
+                + ID_COL + "INTEGER PRIMARY KEY AUTOINCREMENT,"
+                + GATEGORY_NAME_COL + "VARCHAR, "
+                + NUMBER_OF_TASKS_COL + "VARCHAR)";
+
+        sqLiteDatabase.execSQL(query);
     }
 
     /**
@@ -72,4 +61,17 @@ public class DBHandler extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+    //Name the DB
+    private static final String DB_NAME = "taskDB";
+
+    private static final int DB_VERSION = 1;
+
+    private static final String TABLE_NAME  =   "Task-classifications";
+
+    private static final String ID_COL  =   "id";
+
+    private static final String GATEGORY_NAME_COL  =   "CategoryName";
+    private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
+
 }
