@@ -5,10 +5,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+
+
+    //Definition of elements
+    Button btnAdd, btnList, btnSearch;
+
+    private DBHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View v) {
+
+        //adding new Categories
+    if (v == btnAdd) {
+
+    }
 
     }
 }
