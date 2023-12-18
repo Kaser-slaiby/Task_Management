@@ -1,5 +1,6 @@
 package com.example.task_management;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -41,10 +42,20 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
                 return;
             }
 
+            dbHandler.addNewGategory(GategoryName);
+                showMessage("Done", "Thanks");
+//                clearText();
+//                readAllData();
+
         }
 
     }
 
-    private void showMessage(String error, String message) {
+    private void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
 }
