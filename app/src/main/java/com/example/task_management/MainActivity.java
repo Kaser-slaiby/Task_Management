@@ -1,10 +1,13 @@
 package com.example.task_management;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
@@ -63,5 +66,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         menu.add(0, MENU_ABOUT_ID, 0, "About programmers");
         menu.add(0, MENU_QUIT_ID, 0, "Close the application");
         return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case MENU_ABOUT_ID:
+                Intent intent = new Intent(this, Activity_About.class);
+                startActivities(new Intent[]{intent});
+                break;
+
+            case MENU_QUIT_ID:
+                finish();
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
