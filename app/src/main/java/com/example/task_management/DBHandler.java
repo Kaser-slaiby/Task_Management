@@ -1,5 +1,6 @@
 package com.example.task_management;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -74,4 +75,18 @@ public class DBHandler extends SQLiteOpenHelper {
     private static final String GATEGORY_NAME_COL  =   "CategoryName";
     private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
 
+    public void addNewGategory(String gategoryName) {
+
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(GATEGORY_NAME_COL, gategoryName);
+
+        db.insert("Task-classifications",null, contentValues);
+
+        db.close();
+    }
 }
+
+

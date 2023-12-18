@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -48,7 +49,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //      read all Categories records
     public void readAllData() {
-
+//        GategoryModelArrayList = new ArrayList<>();
+//        dbHandler = new DBHandler(MainActivity.this);
+//
+//        GategoryModelArrayList = dbHandler.readGategory();
     }
 
     @Override
@@ -56,6 +60,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 //        adding new Categories
     if (v == btnAdd) {
+
+        Intent intent = new Intent(this, Activity_Add_Gategory.class);
+        startActivities(new Intent[]{intent});
+    }
+    else {
 
     }
 
