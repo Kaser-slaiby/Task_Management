@@ -35,10 +35,12 @@
         </LinearLayout>
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/et_gategory_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:layout_margin="10dp"
+            android:hint="Name Gategory"
             android:inputType="text"
             android:text="Name" />
 
@@ -48,11 +50,12 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/save"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="@string/save"
+                 />
         </LinearLayout>
 
 
