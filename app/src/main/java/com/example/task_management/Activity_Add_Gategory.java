@@ -12,7 +12,7 @@ import android.widget.EditText;
 
 public class Activity_Add_Gategory extends AppCompatActivity implements View.OnClickListener {
 
-    SQLiteDatabase db;
+
     EditText et_gategory_name;
 
     Button  btnSave;
@@ -24,7 +24,8 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gategory);
 //      below line is to add new Gategory
-        btnSave.setOnClickListener(this);
+
+//        btnSave.setOnClickListener(this);
 
         dbHandler = new DBHandler(Activity_Add_Gategory.this);
 
@@ -47,6 +48,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
             dbHandler.addNewGategory(GategoryName);
             showMessage("Done", "Thanks");
 //                clearText();
+
 //                readAllData();
 
         }
