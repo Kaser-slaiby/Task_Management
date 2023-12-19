@@ -23,15 +23,24 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gategory);
-//      below line is to add new Gategory
-
-//        btnSave.setOnClickListener(this);
-
-        dbHandler = new DBHandler(Activity_Add_Gategory.this);
 
         et_gategory_name = findViewById(R.id.et_gategory_name);
+
         btnSave = findViewById(R.id.btnSave);
 
+        btnSave.setOnClickListener(this);
+
+//      below line is to add new Gategory
+
+
+
+        dbHandler = new DBHandler(Activity_Add_Gategory.this);
+                 
+        readAllData();
+
+    }
+
+    private void readAllData() {
     }
 
     @Override
@@ -41,7 +50,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
             String GategoryName = et_gategory_name.getText().toString().trim();
 
             if (GategoryName.isEmpty()) {
-                showMessage("Error", "يرجى مل.................");
+                showMessage("Error", "Please fill out the information");
                 return;
             }
 
@@ -49,7 +58,6 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
             showMessage("Done", "Thanks");
 //                clearText();
 
-//                readAllData();
 
         }
 
