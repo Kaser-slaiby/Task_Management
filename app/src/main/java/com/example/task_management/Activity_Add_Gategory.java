@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import java.util.ArrayList;
+
 public class Activity_Add_Gategory extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -41,6 +43,8 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
     }
 
     private void readAllData() {
+//        ArrayList<Object> Gategory_Model = new ArrayList<>();
+//        dbHandler = new DBHandler(Activity_Add_Gategory.this);
     }
 
     @Override
@@ -56,6 +60,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
 
             dbHandler.addNewGategory(GategoryName);
             showMessage("It was completed", "Added successfully");
+
 //                clearText();
 
 

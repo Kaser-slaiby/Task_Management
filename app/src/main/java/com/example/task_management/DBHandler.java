@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+
 public class DBHandler extends SQLiteOpenHelper {
 
     //Name the DB
@@ -44,16 +46,23 @@ public class DBHandler extends SQLiteOpenHelper {
 
     public void addNewGategory(String gategoryName) {
 
-        SQLiteDatabase sqLiteDatabase = this.getWritableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(GATEGORY_NAME_COL, gategoryName);
 
-        sqLiteDatabase.insert("Task-classifications",null, contentValues);
+        db.insert(TABLE_NAME,null, contentValues);
 
-        sqLiteDatabase.close();
+        db.close();
     }
+
+//    public ArrayList<Gategory_Model> readGategory() {
+//        SQLiteDatabase db = this.rawQuery( "SELECT * FROM " + TABLE_NAME)
+//    }
+//
+//    private SQLiteDatabase rawQuery() {
+//    };
 }
 
 

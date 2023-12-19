@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private DBHandler dbHandler;
 
+    private ArrayList< Gategory_Model> gategoryModelArrayList;
     final int MENU_ABOUT_ID = 1;
     final int MENU_QUIT_ID = 2;
 
@@ -93,4 +94,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
+
 }
