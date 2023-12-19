@@ -55,7 +55,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
             }
 
             dbHandler.addNewGategory(GategoryName);
-            showMessage("Done", "Thanks");
+            showMessage("It was completed", "Added successfully");
 //                clearText();
 
 
