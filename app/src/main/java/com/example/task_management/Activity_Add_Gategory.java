@@ -3,6 +3,7 @@ package com.example.task_management;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.text.Editable;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.EditText;
 
 public class Activity_Add_Gategory extends AppCompatActivity implements View.OnClickListener {
 
+    SQLiteDatabase db;
     EditText et_gategory_name;
 
     Button  btnSave;
@@ -43,7 +45,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
             }
 
             dbHandler.addNewGategory(GategoryName);
-                showMessage("Done", "Thanks");
+            showMessage("Done", "Thanks");
 //                clearText();
 //                readAllData();
 
