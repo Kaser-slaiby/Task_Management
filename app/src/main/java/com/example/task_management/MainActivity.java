@@ -2,9 +2,11 @@ package com.example.task_management;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
@@ -47,6 +49,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        style for layout bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_barlayout);
+
+//
+//        Cursor cursor = db.rawQuery("SELECT * FROM Tasks", null);
+//        if (cursor.getCount() == 0) {
+//            showMessage("Error", "NO");
+//            return;
+//        };
 
     }
 
@@ -94,5 +103,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         return super.onOptionsItemSelected(item);
     }
+    public void showMessage(String title, String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
+    }
+
 
 }

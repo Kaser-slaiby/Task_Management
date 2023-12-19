@@ -16,7 +16,7 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
 
-    private static final String TABLE_NAME  =   "Task-classifications";
+    private static final String TABLE_NAME  =   "Tasks";
 
     private static final String ID_COL  =   "id";
 
