@@ -15,12 +15,6 @@
             android:name=".Activity_Add_Gategory"
             android:exported="false" />
         <activity
-            android:name=".activity_add_gategory"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity2"
-            android:exported="false" />
-        <activity
             android:name=".Activity_About"
             android:exported="false" />
         <activity
