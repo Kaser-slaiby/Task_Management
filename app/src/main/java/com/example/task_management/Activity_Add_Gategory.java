@@ -30,7 +30,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
 
         btnSave = findViewById(R.id.btnSave);
 
-        btnSave.setOnClickListener(this);
+            btnSave.setOnClickListener(this);
 
 //      below line is to add new Gategory
 
@@ -38,7 +38,7 @@ public class Activity_Add_Gategory extends AppCompatActivity implements View.OnC
 
         dbHandler = new DBHandler(Activity_Add_Gategory.this);
                  
-        readAllData();
+//        readAllData();
 
     }
 
