@@ -23,17 +23,17 @@ import androidx.annotation.Nullable;
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        String query =
-                "CREATE TABLE " + TABLE_NAME +
-                        " (" + COLUM_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+    public void onCreate(SQLiteDatabase db) {
+        String query = "CREATE TABLE " + TABLE_NAME +
+                        " (" + COLUM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                         GATEGORY_NAME_COL + " TEXT, " +
                         NUMBER_OF_TASKS_COL + " INTEGER);";
-
+        db.execSQL(query);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-
+    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(db);
     }
 }
