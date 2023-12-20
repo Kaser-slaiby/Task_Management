@@ -1,23 +1,29 @@
 package com.example.task_management;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+import androidx.annotation.Nullable;
 
 import androidx.annotation.Nullable;
 
  class MyDatabaseHelper extends SQLiteOpenHelper {
 
      private Context context;
-     public static final String DATABASE_NAME = "Task.db";
-     public static final int DATABASE_VERSION = 1;
+     private static final String DATABASE_NAME = "Task.db";
+     private static final int DATABASE_VERSION = 1;
      private static final String TABLE_NAME  =   "Tasks";
 
      private static final String COLUM_ID  =   "_id";
 
      private static final String GATEGORY_NAME_COL  =   "CategoryName";
      private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
-    public MyDatabaseHelper(@Nullable Context context) {
+
+
+     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -36,4 +42,30 @@ import androidx.annotation.Nullable;
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
-}
+
+
+    void addGategory (String title, int pages) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(GATEGORY_NAME_COL, title);
+        cv.put(NUMBER_OF_TASKS_COL, pages);
+        long result = db.insert(TABLE_NAME, null, cv);
+        if (result == -1) {
+            Toast.makeText(context, "F", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "S", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+     Cursor readAllData(){
+         String query = "SELECT * FROM " + TABLE_NAME;
+         SQLiteDatabase db = this.getReadableDatabase();
+
+         Cursor cursor = null;
+         if(db != null){
+             cursor = db.rawQuery(query, null);
+         }
+         return cursor;
+     }
+ }

@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.database.Cursor;
@@ -13,20 +15,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    SQLiteDatabase db;
+    RecyclerView rv_Categories;
     //Definition of elementsS
     Button btnAdd, btnList, btnSearch;
+    MyDatabaseHelper myDB;
+    ArrayList<String> CategoryName, NumberOfTasks;
+    CustomAdapter customAdapter;
 
-    private DBHandler dbHandler;
 
-    private ArrayList< Gategory_Model> gategoryModelArrayList;
+
     final int MENU_ABOUT_ID = 1;
     final int MENU_QUIT_ID = 2;
 
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        rv_Categories = findViewById(R.id.rv_Categories);
+
 //         initializing all our objects
         btnAdd = findViewById(R.id.btnAdd);
 
@@ -42,13 +48,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAdd.setOnClickListener(this);
 
 //      creating a new handler class
-        dbHandler = new DBHandler(MainActivity.this);
-
-        readAllData();
 
 //        style for layout bar
         Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action_barlayout);
+
+        myDB = new MyDatabaseHelper(MainActivity.this);
+        CategoryName = new ArrayList<>();
+        NumberOfTasks = new ArrayList<>();
+        storDataInArray();
+
+
+        customAdapter = new CustomAdapter(MainActivity.this,this, CategoryName, NumberOfTasks);
+        rv_Categories.setAdapter(customAdapter);
+        rv_Categories.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
 //
 //        Cursor cursor = db.rawQuery("SELECT * FROM Tasks", null);
@@ -58,14 +71,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //        };
 
     }
+    void storDataInArray () {
+        Cursor cursor = myDB.readAllData();
+        if(cursor.getCount() == 0) {
+            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
+        }else {
+            while (cursor.moveToNext()) {
+                CategoryName.add(cursor.getString(0));
+                NumberOfTasks.add(cursor.getString(1));
+            }
+        }
+    }
 
 //      read all Categories records
-    public void readAllData() {
-//        GategoryModelArrayList = new ArrayList<>();
-//        dbHandler = new DBHandler(MainActivity.this);
-//
-//        GategoryModelArrayList = dbHandler.readGategory();
-    }
 
     @Override
     public void onClick(View v) {
