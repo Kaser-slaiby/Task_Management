@@ -19,10 +19,16 @@ import androidx.annotation.Nullable;
      private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
     public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        this.context = context;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        String query =
+                "CREATE TABLE " + TABLE_NAME +
+                        " (" + COLUM_ID + "INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                        GATEGORY_NAME_COL + " TEXT, " +
+                        NUMBER_OF_TASKS_COL + " INTEGER);";
 
     }
 
