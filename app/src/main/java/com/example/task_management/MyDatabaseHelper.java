@@ -8,9 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 
-import androidx.annotation.Nullable;
-
- class MyDatabaseHelper extends SQLiteOpenHelper {
+class MyDatabaseHelper extends SQLiteOpenHelper {
 
      private Context context;
      private static final String DATABASE_NAME = "Task.db";
@@ -32,8 +30,7 @@ import androidx.annotation.Nullable;
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
                         " (" + COLUM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        GATEGORY_NAME_COL + " TEXT, " +
-                        NUMBER_OF_TASKS_COL + " INTEGER);";
+                        GATEGORY_NAME_COL + " TEXT);";
         db.execSQL(query);
     }
 
@@ -44,17 +41,16 @@ import androidx.annotation.Nullable;
     }
 
 
-    void addGategory (String title, int pages) {
+    void addGategory (String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
         cv.put(GATEGORY_NAME_COL, title);
-        cv.put(NUMBER_OF_TASKS_COL, pages);
         long result = db.insert(TABLE_NAME, null, cv);
         if (result == -1) {
-            Toast.makeText(context, "F", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Fauls", Toast.LENGTH_SHORT).show();
         } else {
-            Toast.makeText(context, "S", Toast.LENGTH_SHORT).show();
+            Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
         }
     }
 

@@ -22,15 +22,14 @@ import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    RecyclerView rv_Categories;
     //Definition of elementsS
+    RecyclerView rv_Categories;
     Button btnAdd, btnList, btnSearch;
     MyDatabaseHelper myDB;
     ArrayList<String> CategoryName, NumberOfTasks;
     CustomAdapter customAdapter;
 
-
-
+    //For menu view
     final int MENU_ABOUT_ID = 1;
     final int MENU_QUIT_ID = 2;
 
@@ -39,37 +38,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        rv_Categories = findViewById(R.id.rv_Categories);
-
 //         initializing all our objects
         btnAdd = findViewById(R.id.btnAdd);
-
-//        below line is to add onclick listener for our buttons
         btnAdd.setOnClickListener(this);
-
-//      creating a new handler class
-
-//        style for layout bar
-        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.action_barlayout);
 
         myDB = new MyDatabaseHelper(MainActivity.this);
         CategoryName = new ArrayList<>();
         NumberOfTasks = new ArrayList<>();
         storDataInArray();
 
-
+//      RV
+        rv_Categories = findViewById(R.id.rv_Categories);
         customAdapter = new CustomAdapter(MainActivity.this,this, CategoryName, NumberOfTasks);
         rv_Categories.setAdapter(customAdapter);
         rv_Categories.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
-//
-//        Cursor cursor = db.rawQuery("SELECT * FROM Tasks", null);
-//        if (cursor.getCount() == 0) {
-//            showMessage("Error", "NO");
-//            return;
-//        };
-
+//        style for layout bar
+        Objects.requireNonNull(getSupportActionBar()).setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action_barlayout);
     }
     void storDataInArray () {
         Cursor cursor = myDB.readAllData();

@@ -18,7 +18,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 public class Activity_Add_Gategory extends AppCompatActivity  {
-    EditText et_success, et_gategory_name;
+    EditText  et_gategory_name;
     Button btnSave;
 
     @Override
@@ -26,7 +26,6 @@ public class Activity_Add_Gategory extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_gategory);
 
-        et_success = findViewById(R.id.et_success);
         et_gategory_name = findViewById(R.id.et_gategory_name);
 
         btnSave = findViewById(R.id.btnSave);
@@ -34,8 +33,7 @@ public class Activity_Add_Gategory extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(Activity_Add_Gategory.this);
-                myDB.addGategory(et_gategory_name.getText().toString().trim(),
-                Integer.valueOf(et_success.getText().toString().trim())
+                myDB.addGategory(et_gategory_name.getText().toString().trim()
                 );
             }
         });

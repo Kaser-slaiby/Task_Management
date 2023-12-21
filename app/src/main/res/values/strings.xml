@@ -5,6 +5,7 @@
     <string name="search">search</string>
     <string name="add">add</string>
     <string name="tv">Manager Tasks</string>
+    <string name="tv_classifications">Task classifications</string>
 
     \\\\\For actiivity add gategory
     <string name="ng">New Gategory</string>
