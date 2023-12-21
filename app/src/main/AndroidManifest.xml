@@ -14,6 +14,7 @@
         <activity
             android:name=".Activity_Add_Gategory"
             android:exported="false"
+            android:label="ADD NEW Gategory"
             android:parentActivityName=".MainActivity"
             />
         <activity

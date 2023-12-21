@@ -27,7 +27,6 @@ public class Activity_Add_Gategory extends AppCompatActivity  {
         setContentView(R.layout.activity_add_gategory);
 
         et_gategory_name = findViewById(R.id.et_gategory_name);
-
         btnSave = findViewById(R.id.btnSave);
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
