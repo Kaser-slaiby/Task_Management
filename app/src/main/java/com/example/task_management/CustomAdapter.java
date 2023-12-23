@@ -47,8 +47,8 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     @Override
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
 
-        holder.book_title_txt.setText(String.valueOf(NumberOfTasks.get(position)));
-        holder.book_id_txt.setText(String.valueOf(CategoryName.get(position)));
+        holder.gategory_title_txt.setText(String.valueOf(NumberOfTasks.get(position)));
+        holder.gategory_id_txt.setText(String.valueOf(CategoryName.get(position)));
 
     }
 
@@ -58,13 +58,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView book_id_txt, book_title_txt, book_author_txt, book_pages_txt;
+        TextView book_id_txt, book_title_txt, gategory_id_txt, gategory_title_txt;
         LinearLayout mainLayout;
 
         MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            book_id_txt = itemView.findViewById(R.id.gategory_id_txt);
-            book_title_txt = itemView.findViewById(R.id.gategory_title_txt);
+            gategory_id_txt = itemView.findViewById(R.id.gategory_id_txt);
+            gategory_title_txt = itemView.findViewById(R.id.gategory_title_txt);
             mainLayout = itemView.findViewById(R.id.mainLayout);
 
         }

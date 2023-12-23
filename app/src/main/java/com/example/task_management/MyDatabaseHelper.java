@@ -18,7 +18,6 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
      private static final String COLUM_ID  =   "_id";
 
      private static final String GATEGORY_NAME_COL  =   "CategoryName";
-     private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
 
 
      public MyDatabaseHelper(@Nullable Context context) {
