@@ -1,5 +1,6 @@
 package com.example.task_management;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -20,12 +21,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
+public class  CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHolder> {
 
     private Context context;
     private Activity activity;
     private ArrayList CategoryName, NumberOfTasks;
-
 
     CustomAdapter(Activity activity, Context context, ArrayList CategoryName, ArrayList NumberOfTasks){
 
@@ -45,10 +45,18 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, int position) {
-
+    public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.gategory_title_txt.setText(String.valueOf(NumberOfTasks.get(position)));
         holder.gategory_id_txt.setText(String.valueOf(CategoryName.get(position)));
+        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, UpdateActivity.class);
+                intent.putExtra("id", String.valueOf(NumberOfTasks.get(position)));
+                intent.putExtra("title", String.valueOf(CategoryName.get(position)));
+                activity.startActivityForResult(intent, 1);
+            }
+        });
 
     }
 
