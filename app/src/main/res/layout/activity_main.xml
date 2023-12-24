@@ -21,19 +21,6 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-<!--            <Button-->
-<!--                style="@style/ToggleButtonWithIconOnly"-->
-<!--                android:id="@+id/btnList"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_gravity="start"-->
-<!--                tools:layout_editor_absoluteX="168dp"-->
-<!--                tools:layout_editor_absoluteY="153dp"-->
-<!--                android:layout_marginRight="4dp"-->
-<!--                android:layout_marginLeft="2dp"-->
-<!--                app:icon="@drawable/baseline_format_list_bulleted_24"-->
-<!--                />-->
-
             <Button
                 style="@style/ToggleButtonWithIconOnly"
                 android:id="@+id/btnSearch"
@@ -55,15 +42,6 @@
                 app:icon="@drawable/baseline_post_add_24"
                 />
 
-            <TextView
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:gravity="end"
-                android:textColor="@color/black"
-                android:textStyle="bold"
-                android:text="@string/tv_classifications" />
 
         </LinearLayout>
 
@@ -90,7 +68,7 @@
             android:textSize="20sp"
             android:alpha="0.4"
             android:layout_marginLeft="150dp"
-            android:layout_marginRight="150dp"
+            android:layout_marginRight="160dp"
             android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/empty_imageview" />
 

@@ -48,15 +48,16 @@ public class  CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHol
     public void onBindViewHolder(@NonNull CustomAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
         holder.gategory_title_txt.setText(String.valueOf(NumberOfTasks.get(position)));
         holder.gategory_id_txt.setText(String.valueOf(CategoryName.get(position)));
-        holder.mainLayout.setOnClickListener(new View.OnClickListener() {
+        holder.mainLayout.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View v) {
                 Intent intent = new Intent(context, UpdateActivity.class);
                 intent.putExtra("id", String.valueOf(NumberOfTasks.get(position)));
                 intent.putExtra("title", String.valueOf(CategoryName.get(position)));
                 activity.startActivityForResult(intent, 1);
+                return false;
             }
-        });
+    });
 
     }
 
