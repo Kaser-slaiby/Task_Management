@@ -10,17 +10,17 @@ import androidx.annotation.Nullable;
 
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
-     private Context context;
-     private static final String DATABASE_NAME = "Task.db";
-     private static final int DATABASE_VERSION = 1;
-     private static final String TABLE_NAME  =   "Tasks";
+    private Context context;
+    private static final String DATABASE_NAME = "Task.db";
+    private static final int DATABASE_VERSION = 1;
+    private static final String TABLE_NAME = "Tasks";
 
-     private static final String COLUM_ID  =   "_id";
+    private static final String COLUM_ID = "_id";
 
-     private static final String GATEGORY_NAME_COL  =   "CategoryName";
+    private static final String GATEGORY_NAME_COL = "CategoryName";
 
 
-     public MyDatabaseHelper(@Nullable Context context) {
+    public MyDatabaseHelper(@Nullable Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
     }
@@ -28,8 +28,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         String query = "CREATE TABLE " + TABLE_NAME +
-                        " (" + COLUM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        GATEGORY_NAME_COL + " TEXT);";
+                " (" + COLUM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                GATEGORY_NAME_COL + " TEXT);";
         db.execSQL(query);
     }
 
@@ -40,7 +40,7 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    void addGategory (String title) {
+    void addGategory(String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
@@ -53,31 +53,41 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
-     Cursor readAllData(){
-         String query = "SELECT * FROM " + TABLE_NAME;
-         SQLiteDatabase db = this.getReadableDatabase();
+    Cursor readAllData() {
+        String query = "SELECT * FROM " + TABLE_NAME;
+        SQLiteDatabase db = this.getReadableDatabase();
 
-         Cursor cursor = null;
-         if(db != null){
-             cursor = db.rawQuery(query, null);
-         }
-         return cursor;
-     }
+        Cursor cursor = null;
+        if (db != null) {
+            cursor = db.rawQuery(query, null);
+        }
+        return cursor;
+    }
 
-    void updateData(String row_id, String title){
+    void updateData(String row_id, String title) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
         cv.put(GATEGORY_NAME_COL, title);
 
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
-        if(result == -1){
+        if (result == -1) {
             Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
-        }else {
+        } else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
 
     }
- }
+
+    void deleteOneRow(String row_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
+        if (result == -1) {
+            Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
+        }
+    }
+}
 
 

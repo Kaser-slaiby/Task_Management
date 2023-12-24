@@ -1,8 +1,10 @@
 package com.example.task_management;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -25,7 +27,7 @@ public class UpdateActivity extends AppCompatActivity {
 
         title_input = findViewById(R.id.et_gategory_name2);
         update_button = findViewById(R.id.update_button);
-//        delete_button = findViewById(R.id.delete_button);
+        delete_button = findViewById(R.id.delete_button);
 
         //First we call this
         getAndSetIntentData();
@@ -46,6 +48,12 @@ public class UpdateActivity extends AppCompatActivity {
 
             }
         });
+        delete_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                confirmDialog();
+            }
+        });
     }
         void getAndSetIntentData(){
             if (getIntent().hasExtra("id") && getIntent().hasExtra("title")) {
@@ -59,5 +67,26 @@ public class UpdateActivity extends AppCompatActivity {
                 Toast.makeText(UpdateActivity.this, "NO Data", Toast.LENGTH_SHORT).show();
             }
         }
+    void confirmDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Delete " + title + " ?");
+        builder.setMessage("Are you sure you want to delete " + title + " ?");
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                MyDatabaseHelper myDB = new MyDatabaseHelper(UpdateActivity.this);
+                myDB.deleteOneRow(id);
+                finish();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+
+            }
+        });
+        builder.create().show();
     }
+}
+
 
