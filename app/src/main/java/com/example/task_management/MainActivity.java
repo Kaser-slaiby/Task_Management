@@ -16,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     //Definition of elementsS
     RecyclerView rv_Categories;
     Button btnAdd, btnList, btnSearch;
+    ImageView empty_imageview;
+    TextView no_data;
     MyDatabaseHelper myDB;
     ArrayList<String> CategoryName, NumberOfTasks;
     CustomAdapter customAdapter;
@@ -42,6 +46,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //         initializing all our objects
         btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
+        empty_imageview = findViewById(R.id.empty_imageview);
+        no_data = findViewById(R.id.no_data);
 
         myDB = new MyDatabaseHelper(MainActivity.this);
         CategoryName = new ArrayList<>();
@@ -70,12 +76,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     void storDataInArray () {
         Cursor cursor = myDB.readAllData();
         if(cursor.getCount() == 0) {
-            Toast.makeText(this, "No data.", Toast.LENGTH_SHORT).show();
+            empty_imageview.setVisibility(View.VISIBLE);
+            no_data.setVisibility(View.VISIBLE);
         }else {
             while (cursor.moveToNext()) {
                 CategoryName.add(cursor.getString(0));
                 NumberOfTasks.add(cursor.getString(1));
             }
+            empty_imageview.setVisibility(View.GONE);
+            no_data.setVisibility(View.GONE);
         }
     }
 
