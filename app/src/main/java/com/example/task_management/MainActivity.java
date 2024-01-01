@@ -68,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setCustomView(R.layout.action_barlayout);
     }
 
+
     // Refresh update
     @Override 
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

@@ -36,6 +36,7 @@ public class Activity_Add_Gategory extends AppCompatActivity  {
                 );
                 clearText();
             }
+
 //clear text for add gategory just
             private void clearText() {
                 et_gategory_name.setText("");

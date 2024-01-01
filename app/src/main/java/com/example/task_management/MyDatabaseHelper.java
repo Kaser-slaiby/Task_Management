@@ -47,11 +47,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         cv.put(GATEGORY_NAME_COL, title);
         long result = db.insert(TABLE_NAME, null, cv);
-        if (title.isEmpty()) {
+        if (result != 1) {
             Toast.makeText(context, "Please Enter Data", Toast.LENGTH_SHORT).show();
+            return;
         } else {
             Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
         }
+        db.close();
     }
 
 
@@ -73,18 +75,19 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
-        if (title.isEmpty()) {
+        if (result != 1) {
             Toast.makeText(context, "Please Enter Data", Toast.LENGTH_SHORT).show();
+            return;
         } else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
-
+        db.close();
     }
 
     void deleteOneRow(String row_id) {
         SQLiteDatabase db = this.getWritableDatabase();
         long result = db.delete(TABLE_NAME, "_id=?", new String[]{row_id});
-        if (result == -1) {
+        if (result != 1) {
             Toast.makeText(context, "Failed to Delete.", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
