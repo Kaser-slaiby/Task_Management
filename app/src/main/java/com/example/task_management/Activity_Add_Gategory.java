@@ -34,6 +34,11 @@ public class Activity_Add_Gategory extends AppCompatActivity  {
                 MyDatabaseHelper myDB = new MyDatabaseHelper(Activity_Add_Gategory.this);
                 myDB.addGategory(et_gategory_name.getText().toString().trim()
                 );
+                clearText();
+            }
+//clear text for add gategory just
+            private void clearText() {
+                et_gategory_name.setText("");
             }
         });
     }

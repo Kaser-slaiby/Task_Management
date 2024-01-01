@@ -46,12 +46,13 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
         cv.put(GATEGORY_NAME_COL, title);
         long result = db.insert(TABLE_NAME, null, cv);
-        if (result == -1) {
-            Toast.makeText(context, "Fauls", Toast.LENGTH_SHORT).show();
+        if (title.isEmpty()) {
+            Toast.makeText(context, "Please Enter Data", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Save", Toast.LENGTH_SHORT).show();
         }
     }
+
 
     Cursor readAllData() {
         String query = "SELECT * FROM " + TABLE_NAME;
