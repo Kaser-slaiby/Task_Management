@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -27,7 +29,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //Definition of elementsS
     RecyclerView rv_Categories;
-    Button btnAdd, btnList, btnSearch;
+//    Button btnAdd, btnList, btnSearch;
+    FloatingActionButton btnAdd;
     ImageView empty_imageview;
     TextView no_data;
     MyDatabaseHelper myDB;

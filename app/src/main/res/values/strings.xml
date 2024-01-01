@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TASKS</string>
+    <string name="app_name">Tasks</string>
     \\\\For activity_main
     <string name="list">list</string>
     <string name="search">search</string>
@@ -10,6 +10,11 @@
     \\\\\For actiivity add gategory
     <string name="ng">New Gategory</string>
     <string name="save">Save</string>
+
+    \\\\\For activity about
+    <string name="name">Kaser Slaiby</string>
+    <string name="MyId">Kaser_145216</string>
+    <string name="LinkGitHub">https://github.com/Kaser-slaiby</string>
 
     <string name="update">update</string>
     <string name="delete">delete</string>
