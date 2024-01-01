@@ -2,6 +2,7 @@ package com.example.task_management;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -72,8 +73,8 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
 
 
         long result = db.update(TABLE_NAME, cv, "_id=?", new String[]{row_id});
-        if (result == -1) {
-            Toast.makeText(context, "Failed", Toast.LENGTH_SHORT).show();
+        if (title.isEmpty()) {
+            Toast.makeText(context, "Please Enter Data", Toast.LENGTH_SHORT).show();
         } else {
             Toast.makeText(context, "Updated Successfully!", Toast.LENGTH_SHORT).show();
         }
