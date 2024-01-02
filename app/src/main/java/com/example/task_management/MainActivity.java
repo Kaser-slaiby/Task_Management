@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.task_management.Model.Category;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     TextView no_data;
     MyDatabaseHelper myDB;
     ArrayList<String> CategoryName, NumberOfTasks;
+    ArrayList<Category> arrayListCaregory;
     CustomAdapter customAdapter;
 
     //For menu view
