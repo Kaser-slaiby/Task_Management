@@ -9,6 +9,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 
+import com.example.task_management.Model.Category;
+
+import java.util.ArrayList;
+
 class MyDatabaseHelper extends SQLiteOpenHelper {
 
     private Context context;
@@ -92,6 +96,21 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
         } else {
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
+    }
+    public ArrayList<Category> getAllCategory() {
+        ArrayList<Category> arrayListCat = new ArrayList<>();
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("select * from " +TABLE_NAME, null);
+        if (cursor.moveToFirst()) {
+            do {
+                String id = cursor.getString(0);
+                String title = cursor.getString(1);
+                Category category = new Category(id,title);
+                arrayListCat.add(category);
+
+            }while(cursor.moveToNext());
+        }
+        return  arrayListCat;
     }
 }
 

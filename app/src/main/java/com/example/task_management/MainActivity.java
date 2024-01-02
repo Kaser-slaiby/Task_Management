@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         myDB = new MyDatabaseHelper(MainActivity.this);
         CategoryName = new ArrayList<>();
         NumberOfTasks = new ArrayList<>();
+        arrayListCaregory =new ArrayList<>();
         storDataInArray();
 
 //      RV

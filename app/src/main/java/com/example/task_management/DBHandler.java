@@ -16,18 +16,19 @@ public class DBHandler extends SQLiteOpenHelper {
 
     private static final int DB_VERSION = 1;
 
-    private static final String TABLE_NAME  =   "Tasks";
+    private static final String TABLE_NAME = "Tasks";
 
-    private static final String ID_COL  =   "id";
+    private static final String ID_COL = "id";
 
-    private static final String GATEGORY_NAME_COL  =   "CategoryName";
-    private static final String NUMBER_OF_TASKS_COL  =   "NumberOfTasks";
-    public DBHandler( Context context) {
+    private static final String GATEGORY_NAME_COL = "CategoryName";
+    private static final String NUMBER_OF_TASKS_COL = "NumberOfTasks";
+
+    public DBHandler(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase ) {
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         String query = "CREATE TABLE " + TABLE_NAME + "("
                 + ID_COL + "INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -52,17 +53,9 @@ public class DBHandler extends SQLiteOpenHelper {
 
         contentValues.put(GATEGORY_NAME_COL, gategoryName);
 
-        db.insert(TABLE_NAME,null, contentValues);
+        db.insert(TABLE_NAME, null, contentValues);
 
         db.close();
     }
-
-//    public ArrayList<Gategory_Model> readGategory() {
-//        SQLiteDatabase db = this.rawQuery( "SELECT * FROM " + TABLE_NAME)
-//    }
-//
-//    private SQLiteDatabase rawQuery() {
-//    };
 }
-
 
