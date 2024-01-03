@@ -97,21 +97,24 @@ class MyDatabaseHelper extends SQLiteOpenHelper {
             Toast.makeText(context, "Successfully Deleted.", Toast.LENGTH_SHORT).show();
         }
     }
-    public ArrayList<Category> getAllCategory() {
-        ArrayList<Category> arrayListCat = new ArrayList<>();
+        ArrayList<Category> searchCategory(String NumberOfTasks) {
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("select * from " +TABLE_NAME, null);
-        if (cursor.moveToFirst()) {
+        String queryString = "SELECT * FROM " + TABLE_NAME + " WHERE " + GATEGORY_NAME_COL + " = ? ";
+        Cursor cursor_categury = db.rawQuery(queryString , new String[]{NumberOfTasks});
+        ArrayList<Category> categoryArrayList = new ArrayList<>();
+        if (cursor_categury.moveToFirst()) {
             do {
-                String id = cursor.getString(0);
-                String title = cursor.getString(1);
-                Category category = new Category(id,title);
-                arrayListCat.add(category);
-
-            }while(cursor.moveToNext());
+               categoryArrayList.add(new Category(
+                      cursor_categury.getInt(0),
+                       cursor_categury.getString(1)
+               ));
+            }while(cursor_categury.moveToNext());
         }
-        return  arrayListCat;
+        cursor_categury.close();
+        return categoryArrayList;
     }
+
+
 }
 
 

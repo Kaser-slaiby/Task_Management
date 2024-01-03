@@ -53,11 +53,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         btnAdd.setOnClickListener(this);
         empty_imageview = findViewById(R.id.empty_imageview);
         no_data = findViewById(R.id.no_data);
+        myDB = new MyDatabaseHelper(this);
 
         myDB = new MyDatabaseHelper(MainActivity.this);
         CategoryName = new ArrayList<>();
         NumberOfTasks = new ArrayList<>();
         arrayListCaregory =new ArrayList<>();
+//        arrayListCaregory.addAll(myDB.categoryArrayList());
         storDataInArray();
 
 //      RV
@@ -140,6 +142,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         builder.setMessage(message);
         builder.show();
     }
+    public void searchCategory(String NumberOfTasks) {
+        arrayListCaregory =  new ArrayList<>();
+        myDB = new MyDatabaseHelper(MainActivity.this);
+        arrayListCaregory = myDB.searchCategory(NumberOfTasks);
+//        customAdapter = new CustomAdapter(,MainActivity.this);
 
+    }
 
 }

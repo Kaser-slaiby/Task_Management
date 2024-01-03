@@ -2,19 +2,19 @@ package com.example.task_management.Model;
 
 public class Category {
 
-    private String id, title;
-
-    public Category(String id, String title) {
-        this.id = id;
+    private String  title;
+private int id;
+    public Category(int id, String title) {
+        this.id = Integer.parseInt(String.valueOf(id));
         this.title = title;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.id = Integer.parseInt(id);
     }
 
     public String getTitle() {
